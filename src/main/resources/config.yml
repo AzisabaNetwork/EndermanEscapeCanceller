@@ -1,0 +1,15 @@
+#  -------------------------------------------------------------
+#  |                  EndermanEscapeCanceller                  |
+#  |                                                           |
+#  |                     Author : huda0209                     |
+#  |                     Depend :                              |
+#  |  GitHub :                                                 |
+#  |https://github.com/stella-server-mc/IronGolemSpawnCanceller|
+#  |                    ran by spigot 1.13                     |
+#  -------------------------------------------------------------
+
+#AAA
+EnderManEscapeCancellMode: true
+
+#AAAA
+WorldName:

@@ -1,0 +1,27 @@
+name: EndermanEscapeCanceller
+version: @version@
+main: com.github.huda0209.endermanescapecanceller.EndermanEscapeCanceller
+api-version: 1.13
+prefix: EndermanEscapeCanceller
+authors: [ huda0209 ]
+commands:
+  emec:
+    description: EndermanEscapeCanceller plugin command.
+    usage:
+      /<command> reload - Reload config.\n
+      /<command> setmode [true/false] - Set mode to Escape Enderman./n
+      /<command> AddWorld [WorldName] - Add World.\n
+      /<command> DelWorld [WorldName] - Add World.\n
+permissions:
+  EndermanEscapeCanceller.*:
+    children:
+      EndermanEscapeCanceller.SetMode: true
+      EndermanEscapeCanceller.Reload: true
+      EndermanEscapeCanceller.World: true
+
+  EndermanEscapeCanceller.SetMode:
+    default: op
+  EndermanEscapeCanceller.Reload:
+    default: op
+  EndermanEscapeCanceller.World:
+    default: op
