@@ -37,7 +37,7 @@ public class CommandHandler implements CommandExecutor {
 
                 Boolean mode = args[1].equalsIgnoreCase("true");
 
-                sender.sendMessage("§9[" + plugin.getDescription().getName() + "]§a setEnderManEscapeCancellMode set to "+ mode.toString() +".");
+                sender.sendMessage("§9[" + plugin.getDescription().getName() + "]§a setEnderManEscapeCancellMode set to "+ (mode? "§atrue§r" : "§cfalse§r") +".");
                 configLoad.setEnderManEscapeCancellMode(mode,plugin);
                 break;
 
@@ -58,6 +58,10 @@ public class CommandHandler implements CommandExecutor {
                     sender.sendMessage("§9[" + plugin.getDescription().getName() + "]§c This world("+AddworldName+") is NOT found on this server.");
                     return true;
                 }
+                if(configLoad.WorldName.indexOf(AddworldName)>-1){
+                    sender.sendMessage("§9[" + plugin.getDescription().getName() + "]§c This world("+AddworldName+") has already added ServerList.");
+                    return true;
+                }
 
                 configLoad.addWorldName(AddworldName,plugin);
                 sender.sendMessage("§9[" + plugin.getDescription().getName() + "]§a Add World :"+AddworldName);
@@ -72,13 +76,32 @@ public class CommandHandler implements CommandExecutor {
                 String DelWorldName = args[1].toLowerCase(Locale.ROOT);
 
                 if(configLoad.WorldName.indexOf(DelWorldName)==-1){
-                    sender.sendMessage("§9[" + plugin.getDescription().getName() + "]§c This world("+DelWorldName+") is NOT found in serverList.");
+                    sender.sendMessage("§9[" + plugin.getDescription().getName() + "]§c This world("+DelWorldName+") is NOT found in ServerList.");
                     return true;
                 }
 
                 configLoad.removeWorldName(DelWorldName,plugin);
                 sender.sendMessage("§9[" + plugin.getDescription().getName() + "]§a remove World :"+DelWorldName);
                 break;
+
+
+            case "info":
+                if(!sender.hasPermission("EndermanEscapeCanceller.info")){
+                    sender.sendMessage("§9[" + plugin.getDescription().getName() + "]§c You don't have permission!");
+                    return true;
+                }
+
+                String version = plugin.getDescription().getVersion();
+                String WorldNameContents = "";
+                for(int i=0; i<configLoad.WorldName.size(); i++){
+                    WorldNameContents = WorldNameContents+configLoad.WorldName.toArray()[i]+" ";
+                }
+                sender.sendMessage("§9[" + plugin.getDescription().getName() + "] §r" +
+                        "Version : §a"+version+
+                        "§r\n                          EnderManEscapeCancellMode : "+(configLoad.EnderManEscapeCancellMode? "§atrue" : "§cfalse")+
+                        "§r\n                          World : §a"+WorldNameContents
+                );
+                return true;
 
 
             case "reload":
@@ -97,7 +120,7 @@ public class CommandHandler implements CommandExecutor {
 
             default:
                 sender.sendMessage("§9[" + plugin.getDescription().getName() + "]§c Unknown command.");
-                break;
+                return false;
         }
         return true;
     }

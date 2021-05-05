@@ -18,10 +18,13 @@ permissions:
       EndermanEscapeCanceller.SetMode: true
       EndermanEscapeCanceller.Reload: true
       EndermanEscapeCanceller.World: true
+      EndermanEscapeCanceller.info: true
 
   EndermanEscapeCanceller.SetMode:
     default: op
   EndermanEscapeCanceller.Reload:
     default: op
   EndermanEscapeCanceller.World:
+    default: op
+  EndermanEscapeCanceller.info:
     default: op
