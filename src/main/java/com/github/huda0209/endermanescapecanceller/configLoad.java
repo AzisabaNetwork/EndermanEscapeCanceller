@@ -19,13 +19,12 @@ public class configLoad {
             System.out.println("While load the config file, occurred error.");
             return;
         }
-        WorldName = new ArrayList<String>();;
+        WorldName = new ArrayList<String>();
         EnderManEscapeCancellMode = config.getBoolean("EnderManEscapeCancellMode");
 
         if(!config.contains("WorldName")) return;
-        for (String key : config.getConfigurationSection("WorldName").getKeys(false)){
-            WorldName.add(config.getString("WorldName." + key).toLowerCase(Locale.ROOT));
-        }
+
+        WorldName = (List<String>) config.getList("WorldName");
     }
 
     public static void setEnderManEscapeCancellMode(Boolean bool,EndermanEscapeCanceller pl){

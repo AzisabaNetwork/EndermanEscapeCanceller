@@ -21,7 +21,8 @@ public final class EndermanEscapeCanceller extends JavaPlugin implements Command
         for (String s : EnableMessage) {
             getLogger().info(s);
         }
-        getLogger().info("IronGolemSpawnCancellMode was "+configLoad.EnderManEscapeCancellMode.toString()+" now.");
+        getLogger().info("EnderManEscapeCancellMode was "+configLoad.EnderManEscapeCancellMode.toString()+" now.");
+
     }
 
     @Override
